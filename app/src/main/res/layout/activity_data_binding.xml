@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="book"
+            type="com.example.jetpackpro.databinding.Book" />
+
+        <import type="com.example.jetpackpro.databinding.MoneyHelp"/>
+
+        <variable
+            name="eventHandlerListener"
+            type="com.example.jetpackpro.databinding.DataBindingActivity.EventHandlerListener" />
+
+
+        <variable
+            name="networkImage"
+            type="String" />
+
+        <variable
+            name="localImage"
+            type="int" />
+
+        <variable
+            name="loginModel"
+            type="com.example.jetpackpro.databinding.observerField.TwoWayBindingViewModel" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".databinding.DataBindingActivity">
+
+
+        <EditText
+            android:id="@+id/username_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@={loginModel.userName}"/>
+
+
+        <ImageView
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            app:image="@{networkImage}"/>
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            app:image="@{localImage}"/>
+
+        <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@{book.name}"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{book.title}"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{MoneyHelp.formatMoney(book.money)}"/>
+
+
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="change book name"
+            android:onClick="@{eventHandlerListener.changeBookName}"/>
+
+
+
+        <include layout="@layout/inner_content"
+            app:book = "@{book}"/>
+
+
+
+    </LinearLayout>
+</layout>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainFragment2">
+
+    <fragment
+        android:id="@+id/mainFragment2"
+        android:name="com.example.jetpackpro.navigation.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_mainFragment2_to_secondFragment"
+            app:destination="@id/secondFragment"
+            app:enterAnim="@anim/fragment_open_enter"
+            app:exitAnim="@anim/fragment_open_exit"
+            app:popEnterAnim="@anim/fragment_close_enter"
+            app:popExitAnim="@anim/fragment_close_exit" />
+
+        <!-- 添加参数 -->
+        <argument
+            android:name="name"
+            app:argType="string"
+            android:defaultValue='"none"'/>
+        <argument
+            android:name="age"
+            app:argType="integer"
+            android:defaultValue="0"/>
+
+    </fragment>
+    <fragment
+        android:id="@+id/secondFragment"
+        android:name="com.example.jetpackpro.navigation.SecondFragment"
+        android:label="fragment_second"
+        tools:layout="@layout/fragment_second" >
+
+        <deepLink app:uri="www.baidu.com/{params}"/>
+
+    </fragment>
+</navigation>
